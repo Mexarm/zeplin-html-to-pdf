@@ -16,13 +16,18 @@ exports.handler = function handler(event, context, callback) {
         callback(errorResponse);
         return;
     }
-    console.log(body);
-    console.log(body.html);
+    const res = {
+        statusCode: 200,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    };
     wkhtmltopdf(body.html)
         .then(buffer => {
-            callback(null, {
+            res.body = {
                 data: buffer.toString("base64")
-            });
+            };
+            callback(null, res);
         }).catch(error => {
             callback(errorUtil.createErrorResponse(500, "Internal server error", error));
         });
