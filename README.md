@@ -44,12 +44,17 @@ upload package.zip to aws S3
 |----|------|
 |FONTCONFIG_PATH|/var/task/fonts|
 
--then follow (this guide)[https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html] to create and deploy API Gateway
--create API key 
--create UsagePlan
--add API stage to UsagePlan
--goto resource -> click on method (ANY) click Method Request in settings API Key Required set to true.
--re deploy to stage (actions -> api actions -> Deploy)
+then follow [this guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html) to create and deploy API Gateway
+
+create API key 
+
+create UsagePlan
+
+add API stage to UsagePlan
+
+goto resource -> click on method (ANY) click Method Request in settings API Key Required set to true.
+
+re deploy to stage (actions -> api actions -> Deploy)
 
 
 
