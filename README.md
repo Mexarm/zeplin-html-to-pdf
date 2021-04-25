@@ -26,7 +26,9 @@ It yields a response in the following format:
 
 pack the function
 
+```
 npm run pack
+```
 
 upload package.zip to aws S3
 
@@ -34,7 +36,7 @@ upload package.zip to aws S3
  aws s3 cp package.zip s3://lambda-htm2pdf
  ```
 
- follow this guide to create a lambda function 
+then follow [this guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html) to create and deploy API Gateway
 
  Notes: after creating the lambda choose Code Tab then "Upload from"  -> Amazon S3 location and specify the location of package.zip, example: https://lambda-htm2pdf.s3.amazonaws.com/package.zip
 
@@ -44,7 +46,6 @@ upload package.zip to aws S3
 |----|------|
 |FONTCONFIG_PATH|/var/task/fonts|
 
-then follow [this guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html) to create and deploy API Gateway
 
 create API key 
 
