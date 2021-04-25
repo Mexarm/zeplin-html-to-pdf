@@ -22,6 +22,36 @@ It yields a response in the following format:
 ```
 `data` is base64 encoding of the converted PDF file. 
 
+## create function in aws
+
+pack the function
+
+npm run pack
+
+upload package.zip to aws S3
+
+```
+ aws s3 cp package.zip s3://lambda-htm2pdf
+ ```
+
+ follow this guide to create a lambda function 
+
+ Notes: after creating the lambda choose Code Tab then "Upload from"  -> Amazon S3 location and specify the location of package.zip, example: https://lambda-htm2pdf.s3.amazonaws.com/package.zip
+
+ then goto Configuration Tab select Environment variables and create this 
+
+|key | value|
+|----|------|
+|FONTCONFIG_PATH|/var/task/fonts|
+
+-then follow (this guide)[https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html] to create and deploy API Gateway
+-create API key 
+-create UsagePlan
+-add API stage to UsagePlan
+-goto resource -> click on method (ANY) click Method Request in settings API Key Required set to true.
+-re deploy to stage (actions -> api actions -> Deploy)
+
+
 
 ## Test in local environment
 The function can be tested locally using [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-command-reference.html). You can change contents of `events/example-event.json` or you can create a new file which you will give sam as an event parameter.
