@@ -16,7 +16,8 @@ exports.handler = function handler(event, context, callback) {
         callback(errorResponse);
         return;
     }
-
+    console.log(body);
+    console.log(body.html);
     wkhtmltopdf(body.html)
         .then(buffer => {
             callback(null, {
