@@ -24,9 +24,9 @@ exports.handler = function handler(event, context, callback) {
     };
     wkhtmltopdf(body.html)
         .then(buffer => {
-            res.body = {
+            res.body = JSON.stringify({
                 data: buffer.toString("base64")
-            };
+            });
             callback(null, res);
         }).catch(error => {
             callback(errorUtil.createErrorResponse(500, "Internal server error", error));
